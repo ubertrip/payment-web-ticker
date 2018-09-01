@@ -1,0 +1,34 @@
+{
+  "name": "payment-web-ticker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --bail --progress --hide-modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubertrip/payment-web-ticker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ubertrip/payment-web-ticker/issues"
+  },
+  "homepage": "https://github.com/ubertrip/payment-web-ticker#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "moment": "^2.22.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "latest",
+    "copy-webpack-plugin": "^4.5.2",
+    "webpack": "^4.16.5"
+  }
+}
