@@ -20,9 +20,6 @@ const wpConfig = {
   resolve: {
     extensions: ['.js'],
   },
-
-  watch: true,
-
   module: {
     rules: [
       {
@@ -42,6 +39,9 @@ const wpConfig = {
       {from: 'index.html', to: 'index.html'},
       {from: 'manifest.json', to: 'manifest.json'},
     ]),
+    new webpack.EnvironmentPlugin({
+      TICKER_ENV: process.env.TICKER_ENV || 'dev',
+    }),
   ],
 };
 

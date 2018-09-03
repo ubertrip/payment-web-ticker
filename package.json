@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --bail --progress --hide-modules",
+    "start": "export TICKER_ENV=dev && webpack --watch --bail --progress --hide-modules",
+    "build:staging": "export TICKER_ENV=staging && webpack && zip -r relises/ticker-$(date +\"%Y-%m-%d_%H-%M-%S\").zip dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
