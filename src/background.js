@@ -42,7 +42,7 @@ function update() {
                 miscPayment: p.miscPayment ? Math.abs(parseFloat(p.miscPayment)) : 0,
                 netFares: p.netFares ? Math.abs(parseFloat(p.netFares)) : 0,
                 netPayout: p.netPayout ? Math.abs(parseFloat(p.netPayout)) : 0,
-              })).filter(p => p.cashCollected);
+              })).filter(p => p.netPayout);
 
               paymentsPromises.push(updatePayments(preparedPayments));
 
@@ -70,6 +70,8 @@ function update() {
             setTimeout(() => update(), updateDelay);
           });
 
+        }).catch(() => {
+          setTimeout(() => update(), updateDelay);
         });
 
       } else {
@@ -79,6 +81,9 @@ function update() {
       //TODO important, error handler
       setTimeout(() => update(), updateDelay)
     });
+  }).catch(() => {
+    //TODO important, error handler
+    setTimeout(() => update(), updateDelay)
   });
 }
 
@@ -88,7 +93,7 @@ function updatePayments(payments) {
 
 function getDriverStatementSummary(statementUuid) {
   return axios.get(csrfTokenURL).then(({data}) => {
-    return axios.post(getDriverStatementSummaryURL, {statementUuid}, {
+    return axios.post(getDriverStatementSummaryURL, {statementUuid, cursor: 0, limit: 50}, {
       headers: {
         'x-csrf-token': data,
       }
